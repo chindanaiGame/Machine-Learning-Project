@@ -3,15 +3,12 @@ from operator import index
 import streamlit as st
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 # %matplotlib inline
-import seaborn as sns
 import warnings
 warnings.filterwarnings('ignore')
 from sklearn.model_selection import train_test_split
 from plotly import graph_objs as go
 from sklearn.linear_model import LinearRegression
-from sklearn.ensemble import RandomForestRegressor as rfr
 
 
 df = pd.read_csv('insurance.csv')
@@ -29,7 +26,6 @@ X_train, X_test, y_train, y_test = train_test_split(x,y,test_size=0.4)
 
 model = LinearRegression()
 model.fit(X_train,y_train)
-pred = model.predict(X_test)
 
 def show_predict_page():
     st.title("Medical Insurance Cost")
@@ -44,7 +40,7 @@ def show_predict_page():
 
     bmi = st.number_input("BMI", min_value=0)
 
-    children = st.number_input("BMI", min_value=0, max_value=5,step=1)
+    children = st.number_input("Children", min_value=0, max_value=5,step=1)
 
     smoker = st.number_input("smoker(0 = No,1 = Yes)", min_value=0, max_value=1,step=1) 
 
